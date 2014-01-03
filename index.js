@@ -1,22 +1,12 @@
 var request = require('request'),
-	cheerio = require('cheerio'),
-	h = require('apis-helpers');
+	cheerio = require('cheerio');
 
-exports.setup = function (app) {
-	app.get('/is/:id', function (req, callback) {
-		lookupIceland(req.params.id, callback)
-	});
-};
-
-var lookupIceland = exports.is = function (carPlate, callback) {
+exports.is = function (carPlate, callback) {
 
 	if (!carPlate.match(/^[a-z0-9]+$/ig)) {
 		return callback(new Error('Invalid license plate'));
 	}
 	request.get({
-		headers: {
-			'User-Agent': h.browser()
-		},
 		url: 'http://ww2.us.is/upplysingar_um_bil?vehinumber=' + carPlate
 	}, function (error, response, body) {
 		if (error || response.statusCode !== 200) {

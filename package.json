@@ -1,5 +1,5 @@
 {
-  "name": "apis-car",
+  "name": "car",
   "version": "0.1.0",
   "author": {
     "name": "Kristján Ingi Mikaelsson",
@@ -12,10 +12,9 @@
   "description": "An library to look up license plates of cars",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kristjanmik/apis-car.git"
+    "url": "https://github.com/kristjanmik/car.git"
   },
   "dependencies": {
-    "apis-helpers": "~0.0.1",
     "request": "~2.30.0",
     "cheerio": "~0.13.0"
   }

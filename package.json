@@ -1,18 +1,14 @@
 {
-  "name": "car",
+  "name": "firm",
   "version": "0.1.0",
   "author": {
     "name": "Kristján Ingi Mikaelsson",
     "email": "kristjanmik@gmail.com"
   },
-  "contributors": [{
-    "name": "Kristjan Broder Lund",
-    "email": "kristjan.1234@gmail.com"
-  }],
-  "description": "An library to look up license plates of cars",
+  "description": "An library to look up firm registry info",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kristjanmik/car.git"
+    "url": "https://github.com/kristjanmik/firm.git"
   },
   "dependencies": {
     "request": "~2.30.0",

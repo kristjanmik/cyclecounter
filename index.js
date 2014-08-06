@@ -1,5 +1,7 @@
-var request = require('request'),
-	cheerio = require('cheerio');
+var request = require('request');
+var cheerio = require('cheerio');
+var err = require('error-helper');
+
 
 exports.is = function (carPlate, callback) {
 
@@ -10,7 +12,7 @@ exports.is = function (carPlate, callback) {
 		url: 'http://ww2.us.is/upplysingar_um_bil?vehinumber=' + carPlate
 	}, function (error, response, body) {
 		if (error || response.statusCode !== 200) {
-			return callback(new Error('www.us.is refuses to respond or give back data'));
+			return callback(err(502,'www.us.is refuses to respond or give back data'));
 		}
 		var $ = cheerio.load(body),
 			obj = {
@@ -22,9 +24,7 @@ exports.is = function (carPlate, callback) {
 		var nothingFound = $('table tr td').html();
 
 		if (nothingFound.indexOf('Ekkert ökutæki fannst') > -1) {
-			var err = new Error('Not found');
-			err.code = 404;
-			return callback(err);
+			return callback(err(404,'License plate not found'));
 		}
 
 		//Found something
